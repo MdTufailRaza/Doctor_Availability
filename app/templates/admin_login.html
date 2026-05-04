@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Doctor Availability Scheduler</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/portal.css') }}">
+</head>
+<body>
+    <main class="auth-shell">
+        <section class="auth-card admin">
+            <a class="back-link" href="{{ url_for('web_bp.index') }}">Back to portal</a>
+            <p class="eyebrow">Admin Login</p>
+            <h1>Operations Console Access</h1>
+            <p class="auth-copy">Use the admin account to review patient records, confirm appointments, and monitor statistics.</p>
+
+            <div class="credential-box">
+                Demo username: <strong>admin</strong><br>
+                Demo password: <strong>admin123</strong>
+            </div>
+
+            <form id="loginForm" class="auth-form">
+                <input type="hidden" id="role" value="admin">
+                <input type="text" id="username" placeholder="Username" value="admin" required>
+                <input type="password" id="password" placeholder="Password" value="admin123" required>
+                <button type="submit">Login as Admin</button>
+            </form>
+
+            <div id="errorBox" class="feedback hidden"></div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+</body>
+</html>

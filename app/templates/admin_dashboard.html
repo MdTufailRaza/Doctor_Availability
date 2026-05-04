@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Doctor Availability Scheduler</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+    <header class="topbar admin-theme">
+        <div>
+            <p class="eyebrow">Admin Dashboard</p>
+            <h1>Appointment Operations Console</h1>
+            <p class="subtext">Review patient records, confirm booked appointments, update lifecycle status, and monitor operational statistics.</p>
+        </div>
+        <div class="topbar-actions">
+            <span class="user-chip admin-chip">{{ auth_user.display_name }}</span>
+            <button id="logoutButton" class="secondary-btn">Logout</button>
+        </div>
+    </header>
+
+    <main class="dashboard">
+        <section class="card span-two">
+            <div class="section-header">
+                <h2>Statistics</h2>
+                <button id="refreshAdminDashboard" class="secondary-btn">Refresh Dashboard</button>
+            </div>
+            <div id="statsGrid" class="stats-grid"></div>
+        </section>
+
+        <section class="card span-two">
+            <div class="section-header">
+                <h2>Appointments</h2>
+            </div>
+            <form id="appointmentFilterForm" class="inline-form">
+                <select id="appointmentStatusFilter">
+                    <option value="">All Statuses</option>
+                    <option value="BOOKED">BOOKED</option>
+                    <option value="COMPLETED">COMPLETED</option>
+                    <option value="CANCELLED">CANCELLED</option>
+                    <option value="NOSHOW">NOSHOW</option>
+                </select>
+                <button type="submit">Load Appointments</button>
+            </form>
+            <div id="appointmentList" class="list-grid"></div>
+        </section>
+
+        <section class="card">
+            <div class="section-header">
+                <h2>Confirm Appointment</h2>
+            </div>
+            <form id="confirmForm" class="inline-form">
+                <input type="number" id="confirmAppointmentId" placeholder="Appointment ID" required>
+                <button type="submit">Confirm</button>
+            </form>
+            <div id="confirmResult" class="status-card muted">Booked appointments become confirmed here.</div>
+        </section>
+
+        <section class="card">
+            <div class="section-header">
+                <h2>Update Status</h2>
+            </div>
+            <form id="statusUpdateForm" class="stack-form">
+                <div class="form-grid">
+                    <input type="number" id="updateAppointmentId" placeholder="Appointment ID" required>
+                    <select id="appointmentStatus" required>
+                        <option value="">Select Status</option>
+                        <option value="COMPLETED">COMPLETED</option>
+                        <option value="CANCELLED">CANCELLED</option>
+                        <option value="NOSHOW">NOSHOW</option>
+                    </select>
+                </div>
+                <button type="submit">Apply Status</button>
+            </form>
+            <div id="statusResult" class="status-card muted">Lifecycle actions are available to admins only.</div>
+        </section>
+
+        <section class="card span-two">
+            <div class="section-header">
+                <h2>Patient Directory</h2>
+            </div>
+            <div id="patientList" class="list-grid"></div>
+        </section>
+    </main>
+
+    <section class="toast-wrap">
+        <div id="toast" class="toast hidden"></div>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/admin_dashboard.js') }}"></script>
+</body>
+</html>

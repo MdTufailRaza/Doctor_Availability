@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Portal | Doctor Availability Scheduler</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/portal.css') }}">
+</head>
+<body>
+    <main class="portal-shell">
+        <section class="portal-hero">
+            <p class="eyebrow">Doctor Availability Scheduler Platform</p>
+            <h1>Choose your workspace</h1>
+            <p>Patients can search live doctor availability and request appointments. Admins can review patients, confirm bookings, and monitor operational statistics.</p>
+        </section>
+
+        <section class="portal-grid">
+            <article class="portal-card">
+                <span class="portal-tag">User Access</span>
+                <h2>Patient Booking Portal</h2>
+                <p>Search by doctor or speciality, inspect available day and time slots, create a patient record, and book an appointment.</p>
+                <a class="portal-button" href="{{ url_for('web_bp.user_login') }}">Open User Login</a>
+            </article>
+
+            <article class="portal-card admin">
+                <span class="portal-tag">Admin Access</span>
+                <h2>Admin Operations Portal</h2>
+                <p>Review patient data, confirm booked appointments, update status, and track live operational metrics.</p>
+                <a class="portal-button" href="{{ url_for('web_bp.admin_login') }}">Open Admin Login</a>
+            </article>
+        </section>
+    </main>
+</body>
+</html>

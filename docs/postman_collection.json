@@ -1,0 +1,182 @@
+{
+  "info": {
+    "name": "Doctor Availability Scheduler Platform",
+    "_postman_id": "1d6b3d26-6fef-46ce-b19a-6f8c3efdef0a",
+    "description": "Postman-compatible collection for the Doctor Availability Scheduler Platform APIs.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/health",
+          "host": ["{{base_url}}"],
+          "path": ["api", "health"]
+        }
+      }
+    },
+    {
+      "name": "Create Doctor",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Dr. Seema Rao\",\n  \"speciality\": \"Pediatrics\",\n  \"email\": \"seema.rao@hospital.com\",\n  \"phone\": \"9000000010\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/doctors",
+          "host": ["{{base_url}}"],
+          "path": ["api", "doctors"]
+        }
+      }
+    },
+    {
+      "name": "Create Clinic",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"North Point Clinic\",\n  \"location\": \"New Town\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/clinics",
+          "host": ["{{base_url}}"],
+          "path": ["api", "clinics"]
+        }
+      }
+    },
+    {
+      "name": "Add Roster",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"doctor_id\": 2,\n  \"clinic_id\": 1,\n  \"day\": \"THURSDAY\",\n  \"start_time\": \"09:00\",\n  \"end_time\": \"12:00\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/rosters",
+          "host": ["{{base_url}}"],
+          "path": ["api", "rosters"]
+        }
+      }
+    },
+    {
+      "name": "Add Leave",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"doctor_id\": 3,\n  \"start_date\": \"2026-04-27\",\n  \"end_date\": \"2026-04-28\",\n  \"reason\": \"TRAINING\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/leaves",
+          "host": ["{{base_url}}"],
+          "path": ["api", "leaves"]
+        }
+      }
+    },
+    {
+      "name": "Create Patient",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Neha Sharma\",\n  \"contact\": \"8800000001\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/patients",
+          "host": ["{{base_url}}"],
+          "path": ["api", "patients"]
+        }
+      }
+    },
+    {
+      "name": "Search Availability By Speciality",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/availability?speciality=Pediatrics&date=2026-04-23",
+          "host": ["{{base_url}}"],
+          "path": ["api", "availability"],
+          "query": [
+            {"key": "speciality", "value": "Pediatrics"},
+            {"key": "date", "value": "2026-04-23"}
+          ]
+        }
+      }
+    },
+    {
+      "name": "Book Appointment",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"patient_id\": 1,\n  \"doctor_id\": 2,\n  \"clinic_id\": 1,\n  \"date\": \"2026-04-23\",\n  \"time\": \"14:15\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/appointments",
+          "host": ["{{base_url}}"],
+          "path": ["api", "appointments"]
+        }
+      }
+    },
+    {
+      "name": "Track Appointment",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/appointments/1",
+          "host": ["{{base_url}}"],
+          "path": ["api", "appointments", "1"]
+        }
+      }
+    },
+    {
+      "name": "Update Appointment Status",
+      "request": {
+        "method": "PATCH",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"COMPLETED\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/appointments/1/status",
+          "host": ["{{base_url}}"],
+          "path": ["api", "appointments", "1", "status"]
+        }
+      }
+    },
+    {
+      "name": "Utilization Report",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/utilization?doctor_id=2&clinic_id=1&start_date=2026-04-21&end_date=2026-04-30",
+          "host": ["{{base_url}}"],
+          "path": ["api", "utilization"],
+          "query": [
+            {"key": "doctor_id", "value": "2"},
+            {"key": "clinic_id", "value": "1"},
+            {"key": "start_date", "value": "2026-04-21"},
+            {"key": "end_date", "value": "2026-04-30"}
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:5000"
+    }
+  ]
+}

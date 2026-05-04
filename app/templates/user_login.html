@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login | Doctor Availability Scheduler</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/portal.css') }}">
+</head>
+<body>
+    <main class="auth-shell">
+        <section class="auth-card">
+            <a class="back-link" href="{{ url_for('web_bp.index') }}">Back to portal</a>
+            <p class="eyebrow">User Login</p>
+            <h1>Patient Booking Access</h1>
+            <p class="auth-copy">Use the patient account to search availability and book appointments.</p>
+
+            <div class="credential-box">
+                Demo username: <strong>patient</strong><br>
+                Demo password: <strong>patient123</strong>
+            </div>
+
+            <form id="loginForm" class="auth-form">
+                <input type="hidden" id="role" value="user">
+                <input type="text" id="username" placeholder="Username" value="patient" required>
+                <input type="password" id="password" placeholder="Password" value="patient123" required>
+                <button type="submit">Login as User</button>
+            </form>
+
+            <div id="errorBox" class="feedback hidden"></div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+</body>
+</html>

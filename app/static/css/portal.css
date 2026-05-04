@@ -1,0 +1,131 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #163149;
+    background:
+        radial-gradient(circle at top right, rgba(255, 214, 165, 0.34), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(121, 190, 255, 0.26), transparent 35%),
+        linear-gradient(160deg, #f7fbff 0%, #edf5fb 100%);
+}
+
+.portal-shell,
+.auth-shell {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 2rem;
+}
+
+.portal-hero,
+.auth-card,
+.portal-card {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(97, 142, 171, 0.16);
+    box-shadow: 0 20px 45px rgba(27, 72, 109, 0.1);
+}
+
+.portal-hero {
+    max-width: 960px;
+    margin: 0 auto 1.5rem;
+    padding: 2rem;
+    border-radius: 28px;
+}
+
+.portal-grid {
+    max-width: 960px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+}
+
+.portal-card,
+.auth-card {
+    border-radius: 24px;
+    padding: 1.6rem;
+}
+
+.portal-card.admin,
+.auth-card.admin {
+    background: linear-gradient(180deg, rgba(255, 248, 237, 0.96), rgba(255, 255, 255, 0.96));
+}
+
+.portal-tag,
+.credential-box {
+    display: inline-block;
+    border-radius: 999px;
+    background: #e8f4ff;
+    color: #1c6593;
+    padding: 0.35rem 0.85rem;
+    font-size: 0.9rem;
+}
+
+.credential-box {
+    border-radius: 18px;
+    width: 100%;
+    margin: 1rem 0;
+    line-height: 1.7;
+}
+
+.portal-button,
+button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.85rem 1rem;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(135deg, #1476ae, #16a4c8);
+    color: white;
+    text-decoration: none;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    font-size: 0.78rem;
+    color: #4f7b97;
+}
+
+.auth-card {
+    width: min(440px, 100%);
+}
+
+.auth-form {
+    display: grid;
+    gap: 0.85rem;
+}
+
+input {
+    width: 100%;
+    border-radius: 14px;
+    border: 1px solid #c7d8e5;
+    padding: 0.9rem 1rem;
+    font: inherit;
+}
+
+.back-link {
+    color: #1c6593;
+    text-decoration: none;
+}
+
+.feedback {
+    margin-top: 1rem;
+    border-radius: 14px;
+    padding: 0.85rem 1rem;
+    background: #fff0ef;
+    color: #8d2419;
+}
+
+.hidden {
+    display: none;
+}

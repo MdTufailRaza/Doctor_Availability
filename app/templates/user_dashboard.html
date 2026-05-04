@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard | Doctor Availability Scheduler</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <div>
+            <p class="eyebrow">User Dashboard</p>
+            <h1>Book an Appointment</h1>
+            <p class="subtext">Search availability by doctor or speciality, inspect day and time slots, then submit an appointment request.</p>
+        </div>
+        <div class="topbar-actions">
+            <span class="user-chip">{{ auth_user.display_name }}</span>
+            <button id="logoutButton" class="secondary-btn">Logout</button>
+        </div>
+    </header>
+
+    <main class="dashboard">
+        <section class="card span-two">
+            <div class="section-header">
+                <h2>Check Availability</h2>
+                <button id="refreshAvailability" class="secondary-btn">Refresh</button>
+            </div>
+            <form id="availabilityForm" class="stack-form">
+                <div class="form-grid">
+                    <input type="text" id="doctorName" placeholder="Doctor name">
+                    <select id="availabilitySpeciality">
+                        <option value="">Speciality</option>
+                    </select>
+                    <input type="date" id="availabilityDate" required>
+                    <input type="time" id="startTime">
+                    <input type="time" id="endTime">
+                </div>
+                <button type="submit">Search Availability</button>
+            </form>
+            <div id="availabilityList" class="list-grid"></div>
+        </section>
+
+        <section class="card">
+            <div class="section-header">
+                <h2>Create Patient Profile</h2>
+            </div>
+            <form id="patientForm" class="stack-form">
+                <div class="form-grid">
+                    <input type="text" id="patientName" placeholder="Patient name" required>
+                    <input type="text" id="patientContact" placeholder="Contact number" required>
+                </div>
+                <button type="submit">Create Patient</button>
+            </form>
+            <div id="patientResult" class="status-card muted">Create a patient profile before booking.</div>
+        </section>
+
+        <section class="card">
+            <div class="section-header">
+                <h2>Request Appointment</h2>
+            </div>
+            <form id="appointmentForm" class="stack-form">
+                <div class="form-grid">
+                    <input type="number" id="patientId" placeholder="Patient ID" required>
+                    <input type="number" id="doctorId" placeholder="Doctor ID" required>
+                    <input type="number" id="clinicId" placeholder="Clinic ID" required>
+                    <input type="date" id="appointmentDate" required>
+                    <input type="time" id="appointmentTime" step="900" required>
+                </div>
+                <button type="submit">Book Appointment</button>
+            </form>
+            <div id="bookingResult" class="status-card muted">Booked appointments start as pending admin confirmation.</div>
+        </section>
+
+        <section class="card">
+            <div class="section-header">
+                <h2>Specialities</h2>
+            </div>
+            <div id="specialityList" class="list-grid"></div>
+        </section>
+    </main>
+
+    <section class="toast-wrap">
+        <div id="toast" class="toast hidden"></div>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/user_dashboard.js') }}"></script>
+</body>
+</html>
